@@ -108,7 +108,7 @@ export class VerseService {
     if (!isFavorited && !existing) {
       await this.prisma.verse.create({
         data: {
-          bookId,
+          bookId: bookId || book_id,
           bookName: book || book_name || bookName,
           chapter,
           verse,

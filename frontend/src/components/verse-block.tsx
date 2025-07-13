@@ -22,6 +22,8 @@ const VerseBlock = () => {
     if (!verse) return;
 
     try {
+      console.log(verse);
+
       await api.post("/verse/favorite", {
         ...verse,
         isFavorited: verse.isFavorited,
