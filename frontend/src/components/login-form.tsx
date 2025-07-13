@@ -30,6 +30,8 @@ const LoginForm = () => {
       const res = await api.post("/auth/login", values);
 
       const token = res.data;
+      console.log(token);
+
       localStorage.setItem("token", token);
 
       setShowModal(false);
