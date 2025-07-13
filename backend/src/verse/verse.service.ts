@@ -70,6 +70,7 @@ export class VerseService {
     const {
       book,
       bookId,
+      book_id,
       bookName,
       book_name,
       chapter,
@@ -94,6 +95,10 @@ export class VerseService {
         },
       });
       return { status: 'unfavorited' };
+    }
+
+    if (!book_id || !bookId) {
+      throw new BadRequestException('No book id provided');
     }
 
     if (!book || !book_name || !bookName) {

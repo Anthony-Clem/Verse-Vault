@@ -8,9 +8,9 @@ import {
 } from 'class-validator';
 
 export class FavoriteVerseDto {
-  @IsString()
-  @IsNotEmpty()
   bookId: string;
+
+  book_id: string;
 
   bookName: string;
 
