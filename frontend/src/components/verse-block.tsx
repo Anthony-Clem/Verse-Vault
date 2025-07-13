@@ -5,9 +5,11 @@ import { Card, CardAction, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { useVerse } from "@/contexts/verse-context";
 import { api } from "@/lib/api";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/auth-context";
 
 const VerseBlock = () => {
   const { loading, verse, error, setVerse } = useVerse();
+  const { setShowModal, user } = useAuth();
 
   if (loading) return <Loader2 className="mx-auto size-6 animate-spin" />;
 
@@ -19,6 +21,10 @@ const VerseBlock = () => {
   if (!verse) return null;
 
   const onFavorite = async () => {
+    if (!user) {
+      return setShowModal(true);
+    }
+
     if (!verse) return;
 
     try {
